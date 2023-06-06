@@ -23,12 +23,7 @@ class Graph():
         if not self._is_legal_node_idx(i):
             return None
 
-        res = []
-
-        for (_, t) in filter(lambda s, _: s == i, res):
-            res.append(t, res[(i, t)])
-
-        return res
+        return [(st[1], self.edges[st]) for st in filter(lambda st: st[0] == i, self.edges)]
 
     def add_edge(self, i: int, j: int, w: float):
         if not self._is_legal_node_idx(i) or not self._is_legal_node_idx(j):
